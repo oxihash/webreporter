@@ -1,17 +1,29 @@
 # webreporter
 All in one web scanner
 
+## ⚠️ Legal Notice
+
+This tool is for **authorized security testing only**. Unauthorized access to computer systems is illegal. Users are responsible for:
+- Obtaining written permission before testing
+- Complying with all applicable laws
+- Understanding legal consequences of unauthorized testing
 
 Installation Requirements:
 # Install Python dependencies
-pip install requests
+pip install -r requirements.txt
 
-# Install security tools (macOS/Linux)
-brew install subfinder assetfinder ffuf wafw00f nuclei nmap testssl
-# Or use apt/yum depending on your system
+# Install external tools (macOS with Homebrew)
+brew install nmap subfinder assetfinder ffuf nuclei wafw00f
 
+# Linux (Ubuntu/Debian)
+sudo apt-get install nmap
+# Then install Go-based tools via their releases
 
-Usage:
+# Basic usage
+python3 webreporter.py -u https://example.com
 
-python3 pentest_tool.py -u https://target.com
-python3 pentest_tool.py -u https://target.com -o custom_results/
+# Aggressive mode with custom threads
+python3 webreporter.py -u https://example.com -a -t 10 -o my_results/
+
+# Custom output directory and timeout
+python3 webreporter.py -u https://target.com -o results/ --timeout 600
